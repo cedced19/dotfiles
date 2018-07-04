@@ -48,9 +48,6 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# define workspace
-set $workspace10 "10: Media"
-
 # switch to workspace
 bindsym $mod+ampersand workspace 1
 bindsym $mod+eacute workspace 2
@@ -78,9 +75,6 @@ bindsym $mod+Shift+agrave move container to workspace 10
 
 # automatically putting clients on specific workspaces
 for_window [class="Spotify"] move to workspace 10
-
-# automatically enable floating mode for emulator
-for_window [title="Android Emulator - Nexus:5554"] floating enable
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -118,7 +112,7 @@ exec_always --no-startup-id feh --bg-max ~/.config/wallpapers/1.jpg --bg-scale ~
 bindsym $mod+Shift+x exec i3lock --color "#283851"
 
 # browser: chrome
-bindsym $mod+i exec google-chrome
+bindsym $mod+i exec google-chrome-stable
 
 # file browser: pcmanfm
 bindsym $mod+u exec pcmanfm
@@ -129,14 +123,12 @@ bindsym $mod+m exec spotify
 # screenshot
 bindsym $mod+c exec xfce4-screenshooter
 
-# emulator
-bindsym $mod+a exec emulator -avd Nexus
-
 # colors
 set_from_resource       $active       active
 set_from_resource       $inactive     secondary
 set_from_resource       $background   background
 set_from_resource       $foreground   foreground
+
 
 # class			border	    backgr.   	text	       indicat   child_border
 client.focused          $background #303040     $foreground    #2e9ef4   $active
@@ -147,7 +139,7 @@ client.placeholder      $background $background $foreground    #000000   $inacti
 client.background       $background
 
 # polybar
-exec_always --no-startup-id "killall polybar;polybar -r left & polybar -r right"
+exec_always --no-startup-id "killall polybar;polybar -r default"
 
 # gaps
 smart_gaps on
