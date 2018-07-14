@@ -30,7 +30,7 @@ font-3 = "Material Design Icons:size=13;2"
 
 modules-left = i3
 modules-center = xwindow
-modules-right = battery wifi cpu memory spotify volume date powermenu
+modules-right = screen keyboard battery wifi cpu memory spotify volume date powermenu
 
 [module/i3]
 type = internal/i3
@@ -192,11 +192,31 @@ animation-discharging-4 = 
 animation-discharging-framerate = 500
 format-charging-underline = ${colors.secondary}
 format-discharging-underline = ${colors.secondary}
-format-full-underline = ${colors.secondary}
+format-full-underline = #6ab04c
 full-at = 99
 battery = BAT0
 adapter = ADP1
 poll-interval = 5
+
+[module/screen]
+type = custom/script
+exec = xrandr --verbose | awk '/Brightness/ { print $2*100; exit }'
+scroll-up = ~/.config/polybar/up-brightness.sh
+scroll-down = ~/.config/polybar/down-brightness.sh
+interval = 0.1
+format = 🌔 <label>%
+format-underline = #f0932b
+
+[module/keyboard]
+type = internal/xkeyboard
+format = <label-indicator>
+format-spacing = 0
+format-underline = #badc58
+
+label-indicator = %name%
+label-indicator-padding = 2
+label-indicator-background = #8139e8f 
+blacklist-0 = scroll lock
 
 [settings]
 screenchange-reload = true
