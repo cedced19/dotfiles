@@ -15,4 +15,15 @@ rofi
 rxvt-unicode
 font-awesome
 i3-gaps
+xfce4-volumed
 ```
+
+
+Execute `xfce4-notifyd-config` to configure notifications
+
+
+
+Configure Asus Keyboard
+* `sudo nano /etc/default/grub`
+* use `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_osi="` 
+* `sudo update-grub`

@@ -141,6 +141,7 @@ client.background       $background
 # polybar
 exec_always --no-startup-id "killall polybar;polybar -r default"
 
+exec_always --no-startup-id "killall xfce4-volumed;xfce4-volumed"
 # gaps
 smart_gaps on
 smart_borders on
