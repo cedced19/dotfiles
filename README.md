@@ -14,3 +14,7 @@ rxvt-unicode
 font-awesome
 i3-gaps
 ```
+To open config panel:
+```
+$ env XDG_CURRENTKTOP=GNOME gnome-control-center
+```
