@@ -63,7 +63,6 @@ bindsym $mod+underscore workspace 8
 bindsym $mod+ccedilla workspace 9
 bindsym $mod+agrave workspace 10
 
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+eacute move container to workspace 2
@@ -78,6 +77,8 @@ bindsym $mod+Shift+agrave move container to workspace 10
 
 # automatically putting clients on specific workspaces
 for_window [class="Spotify"] move to workspace 10
+for_window [class="decouverto-rides-creator"] move to workspace 9 
+for_window [class="VirtualBox Machine"] move to workspace 11
 
 # automatically enable floating mode for emulator
 for_window [title="Android Emulator - Nexus:5554"] floating enable
@@ -132,6 +133,9 @@ bindsym $mod+c exec xfce4-screenshooter
 # emulator
 bindsym $mod+a exec emulator -avd Nexus
 
+# picture in picture
+bindsym $mod+b exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 170px; resize shrink height 10000px; resize grow height 350px;move position 15px 600px;'"
+
 # colors
 set_from_resource       $active       active
 set_from_resource       $inactive     secondary
@@ -150,7 +154,13 @@ client.background       $background
 exec_always --no-startup-id "killall polybar;polybar -r left & polybar -r right"
 
 # gaps
-smart_gaps on
-smart_borders on
+
 for_window [class="^.*"] border pixel 2
 for_window [class=".*"] title_format "  %title"
+
+exec_always --no-startup-id "xrandr --output VGA-1 --auto --left-of DVI-D-1"
+
+exec_always --no-startup-id "killall nm-applet; dbus-launch nm-applet"
+exec_always --no-startup-id "killall clipit; clipit"
+
+exec_always --no-startup-id /home/cjung/.config/i3/autotiling.py
